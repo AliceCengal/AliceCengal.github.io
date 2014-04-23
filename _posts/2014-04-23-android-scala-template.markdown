@@ -106,13 +106,9 @@ You will be making minor changes to this file as you develop the app. Change `ma
 
 
 ### Footnotes
-[^best]: "Best" here takes into account documentation and community support, as well as the number
-of StackOverflow questions and answers. No matter how good the language is, programming
-in it is still painful without good guidance. I enjoy Scala very much, but many a times
-I found myself at a dead-end with a mysterious [error message](https://xkcd.com/979/).
+[^best]: "Best" here takes into account documentation and community support, as well as the number of StackOverflow questions and answers. No matter how good the language is, programming in it is still painful without good guidance. I enjoy Scala very much, but many a times I found myself at a dead-end with a mysterious [error message](https://xkcd.com/979/).
 
-[^whole]: In games and graphic intensive applications, only the OpenGL rendering codes
-are written in C. Most of the app would still be written in Java.
+[^whole]: In games and graphic intensive applications, only the OpenGL rendering codes are written in C. Most of the app would still be written in Java.
 
 [^manifest]: http://developer.android.com/guide/topics/manifest/manifest-intro.html
 
