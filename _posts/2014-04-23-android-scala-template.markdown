@@ -4,6 +4,8 @@ title: "Basic template for writing an Android app in Scala"
 date: 2014-04-23
 ---
 
+*Introduction to the most basic components that make up an Android app. We'll use a template to set up all the things that you need, so that you can immediately start making your first app with minimal frustration and anger. At the end of this article, you should have a simple app running on your device, that you can then start experimenting with.*
+
 *This post assumes no familiarity with Scala and Android, but you should be familiar
 with [Java][java], [Maven][maven] and [git][git]. Consult their respective documentations, or ask a VandyApps officer
 for help.*
@@ -26,13 +28,13 @@ the details of my experimentation with other claimants to Java's throne, so I'll
 
 Fork and clone the template from my [repository][template-repo] into your machine.
 
-Now you have a template folder named "android-scala-template-basic". I suggest you keep this folder's content intact. Create another folder, maybe named "test-scala-android", and copy the content of the template folder into the new one.
+Now you have a template folder named "android-scala-template-basic". I suggest you keep this folder's content intact, so that you can easily create multiple new projects based on the template. Create another folder, maybe named "test-scala-android", and copy the content of the template folder into it.
 
 There are eight files and two subfolders here. Each have their own purposes, but you only need to know about a few of them to get started. 
 
 ### `src/com/marsupial/wallaby/MainActivity.scala`
 
-The `src` folder holds the source code of the application. Don't mind the bizarre directory structure; that's just how Java roll. Go down the rabbit hole, and you'll eventually see the only source code file we have.
+The `src` folder holds the source code of the application. Don't mind the bizarre directory structure; that's just how Java rolls. Go down the rabbit hole, and you'll eventually see the only source code file we have.
 
 {% highlight scala %}
 package com.marsupial.wallaby
@@ -53,7 +55,7 @@ class MainActivity extends Activity {
 }
 {% endhighlight %}
 
-Are you feeling that weird "I've never seen this before but it looks familiar" sensation? This is Scala, a close half-sibling[^sibling] of Java. First, no semicolons! Second, Class declaration is similar (we'll talk about that in another post), but method definition is different. You do it like this: 
+Are you feeling that weird "I've never seen this before but it looks familiar" sensation? This is Scala, a close half-sibling[^sibling] of Java. First, no semicolons! Second, class declaration is similar (we'll talk about that in another post), but method definition is different. You do it like this: 
 {% highlight scala %}
 [modifier] def methodName(argName: ArgType): ReturnType = {}
 {% endhighlight %}
@@ -62,12 +64,9 @@ For a void method like onCreate, there is an alternative declaration:
 [modifier] def methodName(argName: ArgType) {}
 {% endhighlight %}
 
-The first line in the file is the package statement. The package name should correspond to the folder structure of src. Next are the import statements, used to bring the names into scope. Then come the class declaration. We declare the class `MainActivity`, which extends `Activity`. An Activity is "an application component that provides a screen with which users can interact in order to do something."[^activity] From here you can add buttons to the screen, handle a touch event, display images and text, and a whole lot more. 
+The first line in the file is the package statement. The package name should correspond to the folder structure of src; `org.horse.lily.MyClass` would become `src/org/horse/lily/MyClass.scala`. Next are the import statements, used to bring the names into scope. Then come the class declaration. We declare the class `MainActivity`, which extends `Activity`. An Activity is "an application component that provides a screen with which users can interact in order to do something."[^activity] From here you can add buttons to the screen, handle a touch event, display images and text, and a whole lot more. 
 
 We then override the `onCreate` method so that we can do something when the Activity is first created. Since this is the only Activity we have, the code here is also the first of our code to ever run when the app is first initialized.
-
-
-
 
 ### `res/layout/main.xml`
 
@@ -92,15 +91,15 @@ In the last line of MainActivity's `onCreate` method you'll see `setContentView(
 </LinearLayout>
 {% endhighlight %}
 
-`LinearLayout` is the parent container that hold all the contents of a window. Inside it as a `TextView` that displays a short snippet of text. You can change everything about how the text should look like here by setting the appropriate parameters.
+`LinearLayout` is the parent container that hold all the contents of a window. Inside it is a `TextView` that displays a short snippet of text. You can change everything about how the text should look like by setting the appropriate parameters here.
 
-When you run the app, it should look like the image shown at the top of this page.
+When you eventually run the app, it should look like the image shown at the top of this page.
 
 ### `AndroidManifest.xml`
 
 > The manifest file presents essential information about your app to the Android system, information the system must have before it can run any of the app's code.[^manifest]
 
-You will be making minor changes to this file as you develop the app. Change `manifest::package` from `com.marsupial.wallaby` to a different package name when you want to create a different app. The package name chosen affects the folder structure of `src`. `application::android:label` is the app's name, and `icon` is obviously the icon. Both of these will determine how the app will look like in the phone's Apps list.
+You will be making minor changes to this file as you develop the app. Change the value of `manifest::package` from `com.marsupial.wallaby` to a different package name when you want to create a different app. The package name chosen affects the folder structure of `src`. `application::android:label` is the app's name, and `icon` is obviously the icon. Both of these will determine how the app will look like in the phone's Apps list.
 
 ### Running the example app
 
