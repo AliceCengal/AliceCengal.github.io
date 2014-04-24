@@ -30,7 +30,7 @@ Fork and clone the template from my [repository][template-repo] into your machin
 
 Now you have a template folder named "android-scala-template-basic". I suggest you keep this folder's content intact, so that you can easily create multiple new projects based on the template. Create another folder, maybe named "test-scala-android", and copy the content of the template folder into it.
 
-There are eight files and two subfolders here. Each have their own purposes, but you only need to know about a few of them to get started. 
+There are eight files and two subfolders in the template. Each have their own purposes, but you only need to know about a few of them to get started. 
 
 ### `src/com/marsupial/wallaby/MainActivity.scala`
 
@@ -101,8 +101,46 @@ When you eventually run the app, it should look like the image shown at the top 
 
 You will be making minor changes to this file as you develop the app. Change the value of `manifest::package` from `com.marsupial.wallaby` to a different package name when you want to create a different app. The package name chosen affects the folder structure of `src`. `application::android:label` is the app's name, and `icon` is obviously the icon. Both of these will determine how the app will look like in the phone's Apps list.
 
+### `pom.xml`
+
+This is a configuration file that tell the Maven build system how to compile and package the application. Just like the manifest file, the pom.xml file has largely been set for you, and you will only be making minor changes to it as you go along. The most important part is the project definition as shown below.
+
+{% highlight xml %}
+    <groupId>com.marsupial</groupId>
+    <artifactId>wallaby</artifactId>
+    <packaging>apk</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>Wallaby</name>
+{% endhighlight %}
+
+The `groupId` and `artifactId` values should match the package name defined in the manifest file, and of course the package name in the source files as well as the subfolder structure of src. This file is also where you would declare the dependencies.
+
+{% highlight xml %}
+    <dependencies>
+
+        <dependency>
+            <groupId>com.google.android</groupId>
+            <artifactId>android</artifactId>
+            <version>4.1.1.4</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>${scala.version}</version>
+        </dependency>
+
+        <!-- Add dependencies here -->
+
+    </dependencies>
+{% endhighlight %}
+
+You can see that by default the project depends on the Android library, because it is an Android app, and the Scala language library because it is written in Scala. When you find yourselves needing more libraries, just add it to the list.
+
 ### Running the example app
 
+After you have understood the four basic components (MainActivity.scala, main.xml, AndroidManifest.xml, pom.xml) you can start messing around with it.
 
 ### Footnotes
 [^best]: "Best" here takes into account documentation and community support, as well as the number of StackOverflow questions and answers. No matter how good the language is, programming in it is still painful without good guidance. I enjoy Scala very much, but many a times I found myself at a dead-end with a mysterious [error message](https://xkcd.com/979/).
