@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gallery Athran</title>
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <style>
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      background: linear-gradient(0deg, slategrey 0%, lavender 100%);
+    }
+
+    section img {
+      width: 100%;
+      max-width: 480px;
+      border-radius: 4px;
+      box-shadow: 3px 3px 3px gray, -3px 3px 3px gray;
+    }
+
+    section div:has(> img) {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    main {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-inline: min(8rem, 4vw);
+      justify-content: center;
+      align-items: justify;
+    }
+
+    main>div {
+      font-size: large;
+      background-color: aliceblue;
+      padding: 0.8rem;
+      border-top: 1px solid white;
+      border-bottom: 1px solid black;
+      border-radius: 4px;
+      box-shadow: 3px 3px 3px gray, -3px 3px 3px gray;
+    }
+
+    /*  Small devices (landscape phones, 576px and up) */
+    @media (min-width: 576px) and (min-height: 576px) {
+      main {
+        gap: 1.5rem;
+      }
+
+      main>div {
+        font-size: larger;
+        padding: 1.5rem;
+      }
+    }
+
+    /* Medium devices (tablets, 768px and up) */
+    @media (min-width: 768px) and (min-height: 768px) {
+      main {
+        gap: 2rem;
+      }
+
+      main>div {
+        font-size: x-large;
+        padding: 2rem;
+      }
+    }
+
+    /* Large devices (desktops, 992px and up) */
+    /* @media (min-width: 992px) { ... } */
+
+    /*  X-Large devices (large desktops, 1200px and up) */
+    /* @media (min-width: 1200px) { ... } */
+
+    main>div:not(.brick):hover {
+      cursor: pointer;
+      background-color: azure;
+      box-shadow: 5px 5px 3px gray, -5px 5px 3px gray;
+    }
+
+    div:has(> section) {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      overflow-y: auto;
+      pointer-events: none;
+    }
+
+    div:has(> section[data-open="jinjang"]) {
+      pointer-events: auto;
+    }
+
+    section {
+      margin: min(8vw, 97px) 49%;
+      background-color: beige;
+      border-style: solid;
+      border-image-slice: 194;
+      border-image-width: min(16vw, 194px);
+      border-image-outset: min(8vw, 97px);
+      border-image-repeat: round;
+      border-image-source: url(fractal-border-3.png);
+      display: none;
+      opacity: 0;
+      transition-property: margin-left margin-right;
+      transition-duration: 0.5s;
+      overflow-x: hidden;
+    }
+
+    section[data-open="jinjang"] {
+      opacity: 1;
+      margin-inline: min(194px, 8vw);
+    }
+
+    section>div {
+      width: max(68vw, 100% - 388px);
+      margin: min(4vw, 50px) auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    section div:has(> pre) {
+      border: 1px solid gray;
+      border-radius: 4px;
+      background-color: white;
+      padding: 0.5rem;
+    }
+  </style>
+
+<body>
+
+  <main>
+    <div id="kassy">Personal budgeting</div>
+    <div id="lexeme">Malay Lexeme synthesizer</div>
+    <div class="brick"></div>
+    <div id="snippets">Code snippets</div>
+    <div id="racket">Racket exercises</div>
+    <div class="brick"></div>
+    <div id="standalone-preact">Standalone Preact template</div>
+    <div id="express-preact">Express+Preact template</div>
+    <div class="brick"></div>
+    <div id="truss">Truss calculator</div>
+    <div id="scala-android">Scala android introduction (old)</div>
+    <div id="scala-android-lib">Scala android library (old)</div>
+    <!-- <div>Factorio mod: Bloodbelt</div> -->
+    <div class="brick">
+      <img src="/favicon.ico" width="20px" />
+    </div>
+    <div id="about-me">About me</div>
+  </main>
+  <div>
+    <section id="kassy-s">
+      <div>
+        <div>
+          <h1 class="text-center">Daddy Kassy: Personal budgeting app</h1>
+          <p class="h5 text-center text-muted">
+            For tracking and analyzing simple personal
+            income,&nbsp;expense,&nbsp;and&nbsp;investment.<br />
+            The target audience is an average working adult.
+          </p>
+          <p class="text-center">
+            <a href="https://github.com/AliceCengal/daddy-kassy">Github</a>
+            &emsp;|&emsp;
+            <a href="https://alicecengal.github.io/daddy-kassy/">App</a>
+          </p>
+        </div>
+        <div>
+          <img src="/images/alicecengal.github.io_daddy-kassy_.png" />
+        </div>
+        <p>A standalone webapp, it requires no installation, just go the URL and
+          start using it immediately.
+          <a href="https://alicecengal.github.io/daddy-kassy/">
+            It is hosted on Github Pages.
+          </a>
+          The first version of this app was written in VanillaJS + jQuery.
+          Then rewritten in React. Then rewritten in JSX-free Preact.
+          The charts are drawn by ChartJS.
+        </p>
+        <p>I previously tracked my budgets in an Excel spreadsheet. The Excel file
+          inevitably grew too big, so I remade it into a webapp. This webapp offers
+          a snappy interface to record your transactions, and provide some
+          chart visualizations for analysis.</p>
+        <p>The key differentiator is the addition of the Obligations&copy; table,
+          which I believe helps keep track some of the more complicated financial
+          structure that an average working adult has to deal with, those
+          pertaining to investments and loans.</p>
+        <button class="btn btn-primary">CLOSE</button>
+      </div>
+    </section>
+
+    <section id="snippets-s">
+      <div>
+        <h1>Random code snippets</h1>
+        <button class="btn btn-primary">CLOSE</button>
+      </div>
+    </section>
+
+    <section id="racket-s">
+      <div>
+        <h1>Racket exercises</h1>
+        <button class="btn btn-primary">CLOSE</button>
+      </div>
+    </section>
+
+    <section id="lexeme-s">
+      <div>
+        <h1>Malay lexeme synthesizer</h1>
+        <button class="btn btn-primary">CLOSE</button>
+      </div>
+    </section>
+
+    <section id="standalone-preact-s">
+      <div>
+        <div>
+          <h1 class="text-center">Standalone Preact template</h1>
+          <p class="text-center">
+            <a href="https://github.com/AliceCengal/daddy-kassy">Github</a>
+            &emsp;|&emsp;
+            <a href="https://alicecengal.github.io/daddy-kassy/">App</a>
+          </p>
+        </div>
+        <p>
+          Standalone Preact allows you to setup a small and simple interactive app very easily on any webpage.
+          The use case include when you want to host the app on free static hosts like Github Pages.
+        </p>
+        <button class="btn btn-primary">CLOSE</button>
+      </div>
+    </section>
+    <section id="express-preact-s">
+      <div>
+        <h1>Daddy Kassy: Personal budgeting app</h1>
+        <button class="btn btn-primary">CLOSE</button>
+      </div>
+    </section>
+    <section id="truss-s">
+      <div>
+        <h1>Daddy Kassy: Personal budgeting app</h1>
+        <button class="btn btn-primary">CLOSE</button>
+      </div>
+    </section>
+    <section id="scala-android-s">
+      <div>
+        <div>
+          <h1 class="text-center">Scala android introduction (OLD)</h1>
+          <p class="text-center"><i>this was written in 2014.</i></p>
+          <p class="text-center text-muted">
+            <a href="https://github.com/AliceCengal/android-scala-template-basic">
+              Github
+            </a>
+          </p>
+        </div>
+        <h6> src/com/marsupial/wallaby/MainActivity.scala</h6>
+        <div>
+          <pre>
+package com.marsupial.wallaby
+
+import android.app.Activity
+import android.os.Bundle
+
+class MainActivity extends Activity {
+
+  /**
+  * Called when the activity is first created.
+  */
+  override def onCreate(saved: Bundle) {
+    super.onCreate(saved)
+    setContentView(R.layout.main)
+  }
+
+}</pre>
+        </div>
+        <h6>pom.xml</h6>
+        <div>
+          <pre>
+&lt;dependencies>
+
+  &lt;dependency>
+      &lt;groupId>com.google.android&lt;/groupId>
+      &lt;artifactId>android&lt;/artifactId>
+      &lt;version>4.1.1.4&lt;/version>
+      &lt;scope>provided&lt;/scope>
+  &lt;/dependency>
+
+  &lt;dependency>
+      &lt;groupId>org.scala-lang&lt;/groupId>
+      &lt;artifactId>scala-library&lt;/artifactId>
+      &lt;version>${scala.version}&lt;/version>
+  &lt;/dependency>
+
+  &lt;!-- Add dependencies here -->
+
+&lt;/dependencies></pre>
+        </div>
+        <button class="btn btn-primary w-100">CLOSE</button>
+      </div>
+    </section>
+    <section id="scala-android-lib-s">
+      <div>
+        <h1>Scala android library (OLD)</h1>
+        <button class="btn btn-primary w-100">CLOSE</button>
+      </div>
+    </section>
+    <section id="about-me-s">
+      <div>
+        <h1>Athran Zuhail Abdul Rahman</h1>
+        <h3>Education</h3>
+        <dd>Maktab Rendah Sains MARA Pengkalan Chepa</dd>
+        <button class="btn btn-primary">CLOSE</button>
+      </div>
+    </section>
+  </div>
+  <script type="module">
+    const $ = (id) => document.getElementById(id)
+    const qsa = (d, s) => d.querySelectorAll(s)
+
+    qsa(document, "main > div:not(.brick)").forEach(({ id }) => {
+      // console.log(e.id)
+      $(id).addEventListener("click", e => {
+
+        $(id + "-s").style.display = "block"
+        setTimeout(
+          () => $(id + "-s").dataset.open = "jinjang",
+          100
+        )
+
+      })
+      qsa($(id + "-s"), "button")[0].addEventListener("click", e => {
+
+        $(id + "-s").dataset.open = ""
+        setTimeout(
+          () => $(id + "-s").style.display = "none",
+          1000
+        )
+
+      })
+    })
+
+  </script>
+</body>
+
+</html>
