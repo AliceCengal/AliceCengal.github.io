@@ -30,6 +30,25 @@
       text-align: center;
     }
 
+    .contact-me {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    @media (min-width: 576px) {
+      .contact-me {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .contact-me>*:not(:last-child)::after {
+        content: '|';
+        margin-left: 1rem;
+      }
+    }
+
     main>details {
       margin-bottom: 16px;
       border: 1px solid gray;
@@ -39,7 +58,6 @@
     }
 
     main>details>summary {
-
       list-style: none;
     }
 
@@ -80,6 +98,11 @@
 <body>
   <main>
     <h1>My development journal</h1>
+    <div class="contact-me">
+      <span>Athran Zuhail</span>
+      <span>cengallut@gmail.com</span>
+      <a href="https://github.com/AliceCengal">Github</a>
+    </div>
     <hr>
     <details>
       <summary>
@@ -264,6 +287,8 @@
         The use case include when you want to host the app on free static hosts like Github Pages.
       </div>
     </details>
+
+    <span>&copy; Athran Zuhail 2023 all rights reserved</span>
 
     <template>
       <details>
